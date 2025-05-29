@@ -1,8 +1,8 @@
 <?php
-
-
-debug(true);
-printarray($_POST);
+//
+//die('do not use');
+//debug(true);
+//printarray($_POST);
 ?>
 
 
