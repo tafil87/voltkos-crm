@@ -1,2 +1,2 @@
 # voltkos-crm
-VoltKos CRM
+VoltKos CRM MVP
