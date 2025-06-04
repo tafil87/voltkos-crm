@@ -50,7 +50,6 @@ $contracts = getContract($db);
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Code</th>
-                                        <th>Name</th>
                                         <th>contract_number</th>
                                         <th>tariff_code</th>
                                         <th>Status</th>
@@ -66,7 +65,6 @@ $contracts = getContract($db);
                                         <tr>
                                             <td><?= htmlspecialchars($u['id']) ?></td>
                                             <td><?= htmlspecialchars($u['customer_id']) ?></td>
-                                            <td><?= htmlspecialchars($u['name']) ?></td>
                                             <td><?= htmlspecialchars($u['contract_number']) ?></td>
                                             <td><?= htmlspecialchars($u['tariff_code']) ?></td>
                                             <td><?= $u['status'] ? 'Active' : 'Inactive' ?></td>

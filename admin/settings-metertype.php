@@ -64,7 +64,7 @@ $result = mysqli_query($db, "SELECT * FROM ref_meter_types");
                                     <input type="text" name="label" class="form-control" required maxlength="64">
                                 </div>
                                 <div class="form-footer">
-                                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                    <button type="submit" class="btn btn-primary w-100">Add</button>
                                 </div>
                             </form>
                         </div>
