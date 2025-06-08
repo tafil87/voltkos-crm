@@ -1,10 +1,7 @@
 <?php
-include("functions/contract_func.php");
-$contracts = getContract($db);
-
+include("functions/customer_func.php");
+$customers = getCustomers($db);
 ?>
-
-    <!-- jQuery FIRST -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Page header -->
@@ -14,7 +11,7 @@ $contracts = getContract($db);
                 <div class="col">
                     <!-- Page pre-title -->
                     <div class="page-pretitle">
-                        Contract
+                        Invoices
                     </div>
                     <h2 class="page-title">
                         Show
@@ -36,7 +33,7 @@ $contracts = getContract($db);
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Registered Contracts</h3>
+                            <h3 class="card-title">Invoices</h3>
                         </div>
                         <div class="card-body">
 
@@ -48,33 +45,31 @@ $contracts = getContract($db);
                                 <table id="users-table" class="table card-table table-vcenter datatable">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Customer Name</th>
-                                        <th>contract number</th>
-                                        <th>tariff code</th>
+                                        <th>Invoice Number</th>
+                                        <th>Name</th>
+                                        <th>Billing Type</th>
+                                        <th>Vat Number</th>
                                         <th>Status</th>
-                                        <th>start date</th>
-                                        <th>end date</th>
-                                        <th>billing cycle</th>
-                                        <th>created at</th>
-                                        <th>Doc.</th>
+                                        <th>Due Date</th>
+                                        <th>Total Amount</th>
+                                        <th>City</th>
+                                        <th>Created</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($contracts as $u): ?>
+                                    <?php foreach ($customers as $u): ?>
                                         <tr>
                                             <td><?= htmlspecialchars($u['id']) ?></td>
                                             <td><?= htmlspecialchars($u['name']) ?></td>
-                                            <td><?= htmlspecialchars($u['contract_number']) ?></td>
-                                            <td><?= htmlspecialchars($u['tariff_code']) ?></td>
+                                            <td><?= htmlspecialchars($u['billing_type']) ?></td>
+                                            <td><?= htmlspecialchars($u['vat_number']) ?></td>
                                             <td><?= $u['status'] ? 'Active' : 'Inactive' ?></td>
-                                            <td><?= htmlspecialchars($u['start_date']) ?></td>
-                                            <td><?= htmlspecialchars($u['end_date']) ?></td>
-                                            <td><?= htmlspecialchars($u['billing_cycle']) ?></td>
+                                            <td><?= htmlspecialchars($u['phone']) ?></td>
+                                            <td><?= htmlspecialchars($u['email']) ?></td>
+                                            <td><?= htmlspecialchars($u['city']) ?></td>
                                             <td><?= htmlspecialchars($u['created_at']) ?></td>
-                                            <td> <a href="uploads/<?= $u['filename_upload'] ?>" target="_blank">Download</a></td>
-                                            <td><a href="#">Edit</a></td>
+                                            <td><a href="invoice-edit.php?<?= htmlspecialchars($u['id']) ?>">Edit</a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>

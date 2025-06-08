@@ -1,6 +1,6 @@
 <?php
-include("functions/contract_func.php");
-$contracts = getContract($db);
+include("functions/meter_func.php");
+$meters= getMeters($db);
 
 ?>
 
@@ -36,7 +36,7 @@ $contracts = getContract($db);
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Registered Contracts</h3>
+                            <h3 class="card-title">Registered Meters</h3>
                         </div>
                         <div class="card-body">
 
@@ -49,31 +49,29 @@ $contracts = getContract($db);
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Customer Name</th>
-                                        <th>contract number</th>
-                                        <th>tariff code</th>
+                                        <th>Contract ID</th>
+                                        <th>Meter Serial</th>
+                                        <th>Meter Number</th>
+                                        <th>Meter Type</th>
+                                        <th>Instal Date</th>
                                         <th>Status</th>
-                                        <th>start date</th>
-                                        <th>end date</th>
-                                        <th>billing cycle</th>
-                                        <th>created at</th>
-                                        <th>Doc.</th>
+                                        <th>Last Kwh</th>
+                                        <th>Last Read</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($contracts as $u): ?>
+                                    <?php foreach ($meters as $u): ?>
                                         <tr>
                                             <td><?= htmlspecialchars($u['id']) ?></td>
-                                            <td><?= htmlspecialchars($u['name']) ?></td>
-                                            <td><?= htmlspecialchars($u['contract_number']) ?></td>
-                                            <td><?= htmlspecialchars($u['tariff_code']) ?></td>
-                                            <td><?= $u['status'] ? 'Active' : 'Inactive' ?></td>
-                                            <td><?= htmlspecialchars($u['start_date']) ?></td>
-                                            <td><?= htmlspecialchars($u['end_date']) ?></td>
-                                            <td><?= htmlspecialchars($u['billing_cycle']) ?></td>
-                                            <td><?= htmlspecialchars($u['created_at']) ?></td>
-                                            <td> <a href="uploads/<?= $u['filename_upload'] ?>" target="_blank">Download</a></td>
+                                            <td><?= htmlspecialchars($u['contract_id']) ?></td>
+                                            <td><?= htmlspecialchars($u['meter_serial']) ?></td>
+                                            <td><?= htmlspecialchars($u['meter_number']) ?></td>
+                                            <td><?= htmlspecialchars($u['meter_type']) ?></td>
+                                            <td><?= htmlspecialchars($u['installation_date']) ?></td>
+                                            <td><?= htmlspecialchars($u['status']) ?></td>
+                                            <td><?= htmlspecialchars($u['last_read_kwh']) ?></td>
+                                            <td><?= htmlspecialchars($u['last_read_time']) ?></td>
                                             <td><a href="#">Edit</a></td>
                                         </tr>
                                     <?php endforeach; ?>

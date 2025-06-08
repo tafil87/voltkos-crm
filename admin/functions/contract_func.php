@@ -12,7 +12,7 @@ function getNextContractId(mysqli $db) {
 
 function getContract($db) {
 
-    $stmt = $db->prepare("SELECT * FROM contracts order by id desc");
+    $stmt = $db->prepare("SELECT * FROM contracts a, customers b where a.customer_id = b.id order by a.id desc; ");
     $stmt->execute();
     $result = $stmt->get_result();
 

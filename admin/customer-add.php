@@ -136,19 +136,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label class="form-label">Country</label>
                                             <input type="text" class="form-control" name="country">
                                         </div>
-                                        <div class="mb-3">
-                                            <?php
-
-                                            $nextId = getNextCustomerId($db);
-                                            if ($nextId !== null) {
-                                                $nextId = $nextId;
-                                            } else {
-                                                $nextId = "Failed to retrieve next ID.";
-                                            }
-                                            ?>
-                                            <label class="form-label">Contract ID</label>
-                                            <input type="text" class="form-control"  value="<?php echo $nextId ?>" disabled>
-                                        </div>
+<!--                                        <div class="mb-3">-->
+<!--                                            --><?php
+//
+//                                            $nextId = getNextCustomerId($db);
+//                                            if ($nextId !== null) {
+//                                                $nextId = $nextId;
+//                                            } else {
+//                                                $nextId = "Failed to retrieve next ID.";
+//                                            }
+//                                            ?>
+<!--                                            <label class="form-label">Contract ID</label>-->
+<!--                                            <input type="text" class="form-control"  value="--><?php //echo $nextId ?><!--" disabled>-->
+<!--                                        </div>-->
                                     </div>
                                 </div>
                             </div>

@@ -267,7 +267,6 @@ $navId = preg_replace('/[^a-zA-Z\-]/', '', $navId); // Remove all characters exc
 
 
 
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false" >
                   <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
@@ -294,6 +293,64 @@ $navId = preg_replace('/[^a-zA-Z\-]/', '', $navId); // Remove all characters exc
 
 
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
+        <span class="nav-link-icon d-md-none d-lg-inline-block">
+<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-recharging"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7.038 4.5a9 9 0 0 0 -2.495 2.47" /><path d="M3.186 10.209a9 9 0 0 0 0 3.508" /><path d="M4.5 16.962a9 9 0 0 0 2.47 2.495" /><path d="M10.209 20.814a9 9 0 0 0 3.5 0" /><path d="M16.962 19.5a9 9 0 0 0 2.495 -2.47" /><path d="M20.814 13.791a9 9 0 0 0 0 -3.508" /><path d="M19.5 7.038a9 9 0 0 0 -2.47 -2.495" /><path d="M13.791 3.186a9 9 0 0 0 -3.508 -.02" /><path d="M12 8l-2 4h4l-2 4" /><path d="M12 21a9 9 0 0 0 0 -18" /></svg>
+        </span>
+                            <span class="nav-link-title">
+            Meters
+        </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item navaction" href="" id="meter-add">
+                                        Add Meters
+                                    </a>
+                                    <a class="dropdown-item navaction" href="" id="meter-show">
+                                        Show Meters
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+
+
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="false">
+        <span class="nav-link-icon d-md-none d-lg-inline-block">
+   <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-file-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M12 17v1m0 -8v1" /></svg>
+        </span>
+                            <span class="nav-link-title">
+            Invoices
+        </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item navaction" href="" id="invoice-add">
+                                        Create Invoice
+                                    </a>
+                                    <a class="dropdown-item navaction" href="" id="invoice-show">
+                                        Show invoices
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+
+
+
+
 
 
                     <li class="nav-item dropdown">
@@ -312,7 +369,7 @@ $navId = preg_replace('/[^a-zA-Z\-]/', '', $navId); // Remove all characters exc
                                     <a class="dropdown-item navaction" href="" id="settings-metertype">
                                         Meter Types
                                     </a>
-                                    <a class="dropdown-item navaction" href="" id="settings-tariffs">
+                                    <a class="dropdown-item navaction" href="" id="settings-tariff">
                                         Tariffs
                                     </a>
                                 </div>

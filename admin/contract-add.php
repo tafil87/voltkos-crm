@@ -1,5 +1,10 @@
 <?php
 include("config/database.php");
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customer_id = $_POST['customer_id'];
     $contract_number = $_POST['contract_number'];
@@ -9,8 +14,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'] ?? 'PENDING';
     $billing_cycle = $_POST['billing_cycle'] ?? 'MONTHLY';
 
-    $stmt = $db->prepare("INSERT INTO contracts (customer_id, contract_number, tariff_code, start_date, end_date, status, billing_cycle) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("issssss", $customer_id, $contract_number, $tariff_code, $start_date, $end_date, $status, $billing_cycle);
+    // Handle file upload
+    $upload_dir = "uploads/";
+    $filename_upload = null;
+
+    if (isset($_FILES['contract_file']) && $_FILES['contract_file']['error'] === UPLOAD_ERR_OK) {
+        $original_name = basename($_FILES['contract_file']['name']);
+        $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+        $safe_name = uniqid('contract_', true) . '.' . $ext;
+        $target_path = $upload_dir . $safe_name;
+
+        if (move_uploaded_file($_FILES['contract_file']['tmp_name'], $target_path)) {
+            $filename_upload = $safe_name;
+        } else {
+            echo "<div class='alert alert-danger'>File upload failed.</div>";
+        }
+    }
+
+    $stmt = $db->prepare("INSERT INTO contracts (customer_id, contract_number, tariff_code, start_date, end_date, status, billing_cycle, filename_upload) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("isssssss", $customer_id, $contract_number, $tariff_code, $start_date, $end_date, $status, $billing_cycle, $filename_upload);
 
     if ($stmt->execute()) {
         echo "<div class='alert alert-success'>Contract inserted successfully.</div>";
@@ -20,10 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
 }
-
-
 ?>
-
 
 
     <!-- Page header -->
@@ -33,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col">
                     <!-- Page pre-title -->
                     <div class="page-pretitle">
-                        Customer
+                        Contract
                     </div>
                     <h2 class="page-title">
                         Add
@@ -82,7 +101,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                                                 <div class="col-md-6">
                                                     <label class="form-label">Tariff Code</label>
-                                                    <input type="text" name="tariff_code" class="form-control" required>
+                                                    <select name="tariff_code" class="form-select" required>
+                                                        <option value="">Select Tariff</option>
+                                                        <?php
+                                                        $result = mysqli_query($db, "SELECT tariff_code, name FROM tariffs ORDER BY name");
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                            echo "<option value='{$row['tariff_code']}'>{$row['tariff_code']} - {$row['name']}</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -104,6 +131,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         <option value="TERMINATED">Terminated</option>
                                                     </select>
                                                 </div>
+
+
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Upload Contract Document</label>
+                                                    <input type="file" name="contract_file" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png">
+                                                </div>
+
 
                                                 <div class="col-md-6">
                                                     <label class="form-label">Billing Cycle</label>
